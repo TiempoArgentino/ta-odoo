@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-07 13:55+0000\n"
+"PO-Revision-Date: 2021-01-07 13:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: Español\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.0; wp-5.6\n"
+"X-Domain: odoo"
+
+#: admin/class-odoo-admin.php:103
+msgid "All clients are about to be synchronized. Are you sure?"
+msgstr ""
+
+#: admin/class-odoo-admin.php:104
+msgid "All clients were synced..."
+msgstr ""
+
+#: admin/class-odoo-admin.php:105
+msgid "An error occurred, check the console..."
+msgstr ""
+
+#: admin/class-odoo-admin.php:106
+msgid "Mass sync did not start."
+msgstr ""
+
+#: admin/class-odoo-admin.php:115
+msgid "Contacts"
+msgstr ""
+
+#: admin/class-odoo-admin.php:124
+msgid "Configuration"
+msgstr ""
+
+#: admin/class-odoo-admin.php:125
+msgid "Add configuration data of the Odoo instance"
+msgstr ""
+
+#: admin/class-odoo-admin.php:139
+msgid "Odoo URL"
+msgstr ""
+
+#: admin/class-odoo-admin.php:140
+msgid "Odoo USER"
+msgstr ""
+
+#: admin/class-odoo-admin.php:141
+msgid "Odoo PASSWORD"
+msgstr ""
+
+#: admin/class-odoo-admin.php:142
+msgid "Odoo DATABASE"
+msgstr ""
+
+#: admin/class-odoo-admin.php:160
+msgid "Activate developer mode to see the base name"
+msgstr ""
+
+#: admin/class-odoo-admin.php:160
+msgid "Help"
+msgstr ""
+
+#: admin/class-odoo-admin.php:200
+msgid "Odoo is connected"
+msgstr ""
+
+#: admin/class-odoo-admin.php:205
+msgid "Odoo Contacts"
+msgstr ""
+
+#: admin/class-odoo-admin.php:206
+msgid "Current Odoo Users"
+msgstr ""
+
+#: admin/class-odoo-admin.php:216
+msgid "Model fields"
+msgstr ""
+
+#: admin/class-odoo-admin.php:217
+msgid "These fields that can be used to sync users."
+msgstr ""
+
+#: admin/class-odoo-admin.php:223
+msgid "Select the roles to sync"
+msgstr ""
+
+#: admin/class-odoo-admin.php:224
+msgid "If you do not select any, ALL the listings will be synchronized"
+msgstr ""
+
+#: admin/class-odoo-admin.php:229
+msgid "We are syncing clients, this takes a while..."
+msgstr ""
+
+#: admin/class-odoo-admin.php:230
+msgid "Synchronize all users."
+msgstr ""
+
+#: admin/class-odoo-admin.php:232
+msgid "Odoo is NOT connected"
+msgstr ""
+
+#: admin/class-odoo-admin.php:285
+msgid "A user with that email exists in Odoo"
+msgstr ""
+
+#: admin/class-odoo-admin.php:288
+msgid "One or more users are already synchronized."
+msgstr ""
+
+#. Name of the plugin
+msgid "Odoo"
+msgstr ""
+
+#. Description of the plugin
+msgid "Connection and sync with Odoo."
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://genosha.com.ar"
+msgstr ""
+
+#. Author of the plugin
+msgid "Juan Iriart"
+msgstr ""

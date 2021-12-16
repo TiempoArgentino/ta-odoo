@@ -1,0 +1,152 @@
+
+async function postData(url = '', data = {}) {
+
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+    });
+    return response.json();
+}
+
+
+if (document.getElementById('syn-contacts-loading')) {
+    const message = document.getElementById('syn-contacts-loading');
+    const userCreation = document.getElementById('user-creation');
+
+    const buttonSync = document.getElementById('btn-sync-contact-new');
+    const buttonCU = document.getElementById('c-users');
+    const quantity = document.getElementById('numero');
+
+    buttonCU.addEventListener('click', () => {
+        createUsers(quantity, userCreation, message);
+    });
+
+    buttonSync.addEventListener('click', () => {
+        const roles = document.querySelectorAll('input[type=checkbox]:checked');
+
+        syncUsers(roles, buttonSync, message);
+    });
+}
+
+const syncUsers = (roles, button, message) => {
+    var role = [];
+    for (var i = 0; i < roles.length; i++) {
+        role.push(roles[i].value)
+    }
+
+    if (role.length <= 0) {
+        alert('Debe seleccionar al menos un perfil para sincronizar.');
+        return;
+    }
+    button.style.display = 'none';
+    message.style.display = 'block';
+    message.innerHTML = 'Sincronizando, un momento por favor. Segundos transcurridos: <span id="count">1</span>';
+
+    const countSeconds = setInterval(() => {
+        var seconds = document.getElementById('count').innerHTML;
+        seconds++;
+        document.getElementById('count').innerHTML = seconds;
+    }, 1000);
+
+    const syncUser = await postData(varOdoo.syncURL, { role })
+        .then(res => {
+            console.log('res', res);
+            clearInterval(countSeconds);//clear interval
+
+            if (!res.success) {
+
+                if(res.data) {
+                    message.innerHTML = res.data; //messages
+                }
+
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 3000);
+
+                button.style.display = 'block';
+                return;
+            }
+            message.innerHTML = 'Usuarios sincronizados';
+
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+
+            button.style.display = 'block';
+        })
+        .catch(err => {
+            console.log('error', err);
+            clearInterval(countSeconds);//clear interval
+            message.innerHTML = '';
+            if(err.code) {
+                message.innerHTML = `${err.code}: ${err.message}`;
+            }
+        });
+
+   return getAllUsers;
+}
+
+const createUsers = async (quantity, div, message) => {
+    //validation
+    if (quantity.value === '' || null === quantity.value) {
+        alert('Debe especificar la cantidad de usuarios');
+    }
+
+    //hide form
+    div.style.display = 'none';
+    //show message
+    message.style.display = 'block';
+    message.innerHTML = 'Creando Usuarios, un momento por favor. Segundos transcurridos: <span id="count">1</span>';
+
+    const show_seconds = setInterval(() => {
+        var seconds = document.getElementById('count').innerHTML;
+        seconds++;
+        document.getElementById('count').innerHTML = seconds;
+    }, 1000);
+
+
+    const createUser = await postData(varOdoo.usrURL, { quantity: quantity.value })
+        .then(res => {
+            console.log(res);
+            //clear interval
+            clearInterval(show_seconds);
+
+            if (!res.success) {
+  
+                if(res.data) {
+                    message.innerHTML = res.data; //messages
+                }
+
+                
+                div.style.display = 'block';
+                setTimeout(() => { //hide message again
+                    message.style.display = 'none';
+                    message.innerHTML = '';
+                }, 3000);
+                return;
+            }
+
+            quantity.value = ''; //clean field value
+            div.style.display = 'block';
+            message.innerHTML = 'Usuarios creados'; //show message
+
+            //hide message again
+            setTimeout(() => {
+                message.style.display = 'none';
+                message.innerHTML = '';
+            }, 3000);
+
+        })
+        .catch(err => {
+            console.log('error', err);
+        });
+    return createUser;
+}
